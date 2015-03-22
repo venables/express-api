@@ -15,7 +15,11 @@
   "dependencies": {
     "express": "^4.12.3",
     "helmet": "^0.7.0",
-    "morgan": "^1.5.2"
+    "morgan": "^1.5.2",
+    "pg": "^4.3.0",
+    "pg-hstore": "^2.3.1",
+    "sequelize": "^2.0.5",
+    "sequelize-cli": "^1.4.0"
   },
   "devDependencies": {
     "dotenv": "^1.0.0",

@@ -7,10 +7,15 @@ PORT=5007
 # Set up npm dependencies
 npm install
 
+# Set up database
+createuser -s express_api
+createdb express_api_development -U express_api
+
 # Set up configurable environment variables for Foreman
 if [ ! -f .env ]; then
   echo "NODE_ENV=development" > .env
   echo "PORT=$PORT" >> .env
+  echo "DATABASE_URL=postgres://express_api@127.0.0.1:5432/express_api_development" >> .env
 fi
 
 echo "port: $PORT" > .foreman
