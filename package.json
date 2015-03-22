@@ -14,7 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.12.3",
-    "helmet": "^0.7.0"
+    "helmet": "^0.7.0",
+    "morgan": "^1.5.2"
   },
   "devDependencies": {
     "dotenv": "^1.0.0",
