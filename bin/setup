@@ -2,7 +2,7 @@
 
 # Run this script immediately after cloning the codebase.
 
-FOREMAN_PORT=5007
+PORT=5007
 
 # Set up npm dependencies
 npm install
@@ -10,14 +10,15 @@ npm install
 # Set up configurable environment variables for Foreman
 if [ ! -f .env ]; then
   echo "NODE_ENV=development" > .env
+  echo "PORT=$PORT" >> .env
 fi
 
-echo "port: $FOREMAN_PORT" > .foreman
+echo "port: $PORT" > .foreman
 
 # Set up DNS through Pow
 if [ -d ~/.pow ]
 then
-  echo $FOREMAN_PORT > ~/.pow/`basename $PWD`
+  echo $PORT > ~/.pow/`basename $PWD`
 else
   echo "Pow not set up. http://goo.gl/RaDPO"
 fi
