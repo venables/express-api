@@ -13,8 +13,4 @@ router.get('/users/:userId', controllers.users.show);
 router.put('/users/:userId', controllers.users.update);
 router.delete('/users/:userId', controllers.users.destroy);
 
-router.get('*', function(req, res) {
-  res.send(404);
-});
-
 module.exports = router;

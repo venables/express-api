@@ -1,24 +1,32 @@
 'use strict';
 
-var index = function(req, res) {
-  res.send({
-    users: []
+var models = require('../models');
+
+var index = function(req, res, next) {
+  models.User.findAll().done(function(err, users) {
+    if (err) {
+      return next(err);
+    }
+
+    res.send({
+      users: users
+    });
   });
 };
 
-var show = function(req, res) {
+var show = function(req, res, next) {
   res.send(404);
 };
 
-var create = function(req, res) {
+var create = function(req, res, next) {
   res.send(400);
 };
 
-var update = function(req, res) {
+var update = function(req, res, next) {
   res.send(404);
 };
 
-var destroy = function(req, res) {
+var destroy = function(req, res, next) {
   res.send(404);
 };
 

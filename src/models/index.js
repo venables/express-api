@@ -1,10 +1,14 @@
 'use strict';
 
 var fs = require('fs');
+var models = {};
 var path = require('path');
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize(process.env.DATABASE_URL);
-var models = {};
+var sequelize = new Sequelize(process.env.DATABASE_URL, {
+  define: {
+    underscored: true
+  }
+});
 
 fs.readdirSync(__dirname).filter(function(file) {
   return (file.indexOf('.') !== 0) && (file !== 'index.js');
