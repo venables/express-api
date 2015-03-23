@@ -9,7 +9,6 @@ var router = express.Router();
 router.post('/sessions', controllers.sessions.create);
 router.delete('/sessions', controllers.sessions.destroy);
 
-
 router.param(':userId', function(req, res, next, userId) {
   models.User.find(userId).done(function(err, user) {
     req.user = user;

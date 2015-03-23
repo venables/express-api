@@ -1,5 +1,6 @@
 'use strict';
 
+var crypto = require('crypto');
 var models = require('../models');
 
 var create = function(req, res, next) {
@@ -8,9 +9,20 @@ var create = function(req, res, next) {
       return next(err);
     }
 
-    res.send(201, {
-      user: user.toJSON()
+    crypto.randomBytes(64, function(err, bytes) {
+      if (err) {
+        return next(err);
+      }
+
+      models.Session.create({ userId: user.get('id'), value: bytes.toString('hex') }).done(function(err, session) {
+        if (err) {
+          return next(err);
+        }
+
+        res.json(201, session);
+      });
     });
+
   });
 };
 
