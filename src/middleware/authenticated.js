@@ -7,17 +7,13 @@ var authenticated = function(req, res, next) {
   var authorizationHeader = req.get('Authorization');
 
   if (!authorizationHeader) {
-    // res.set('WWW-Authenticate', 'Token realm="Application"')
-    // res.send(401)
-    return next(new Error());
+    return next(new errors.UnauthorizedError());
   }
 
   var tokenParts = authorizationHeader.split(' ');
 
   if (tokenParts[0] !== 'Bearer') {
-    // res.set('WWW-Authenticate', 'Token realm="Application"')
-    // res.send(401)
-    return next(new Error());
+    return next(new errors.UnauthorizedError());
   }
 
   var token = tokenParts.pop();
@@ -27,7 +23,7 @@ var authenticated = function(req, res, next) {
     }
 
     if (!session) {
-      return next(new errors.NotFoundError());
+      return next(new errors.UnauthorizedError());
     }
 
     req.session = session;
