@@ -9,7 +9,7 @@
 ## cURL Commands
 
 
-### 1. Sign up
+### Sign up
 
 ```
 curl -v -X POST -H "Content-Type: application/json" \
@@ -17,10 +17,16 @@ curl -v -X POST -H "Content-Type: application/json" \
  http://express-api.dev/api/v1/users
 ```
 
-### 2. Sign in
+### Sign in
 
 ```
 curl -v -X POST -H "Content-Type: application/json" \
  -d '{ "email": "matt@jog.fm", "password": "testing1234" }' \
  http://express-api.dev/api/v1/sessions
+```
+
+### User lists
+
+```
+curl -v http://express-api.dev/api/v1/users
 ```

@@ -17,12 +17,10 @@ module.exports = {
         created_at: DataTypes.DATE,
         updated_at: DataTypes.DATE,
       })
-      .complete(done)
+      .complete(done);
   },
 
   down: function(migration, DataTypes, done) {
-    migration
-      .dropTable('sessions')
-      .complete(done)
+    migration.dropTable('sessions').complete(done);
   }
 };

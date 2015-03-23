@@ -16,7 +16,7 @@ var index = function(req, res, next) {
 };
 
 var show = function(req, res, next) {
-  res.send(404);
+  res.json(200, req.user);
 };
 
 var create = function(req, res, next) {

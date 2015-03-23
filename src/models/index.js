@@ -5,9 +5,6 @@ var models = {};
 var path = require('path');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(process.env.DATABASE_URL, {
-  define: {
-    underscored: true
-  }
 });
 
 fs.readdirSync(__dirname).filter(function(file) {

@@ -24,6 +24,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       field: 'password_digest'
+    },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE
+    },
+    deletedAt: {
+      field: 'deleted_at',
+      type: DataTypes.DATE
     }
   }, {
     tableName: 'users',
@@ -47,6 +59,16 @@ module.exports = function(sequelize, DataTypes) {
             throw new Error('Invalid password');
           }
         });
+      }
+    },
+    instanceMethods: {
+      toJSON: function() {
+        console.log(this);
+        var json = this.values;
+
+        delete json.passwordDigest;
+        delete json.deletedAt;
+        return json;
       }
     }
   });

@@ -22,12 +22,10 @@ module.exports = {
         updated_at: DataTypes.DATE,
         deleted_at: DataTypes.DATE
       })
-      .complete(done)
+      .complete(done);
   },
 
   down: function(migration, DataTypes, done) {
-    migration
-      .dropTable('users')
-      .complete(done)
+    migration.dropTable('users').complete(done);
   }
 };
