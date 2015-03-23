@@ -1,5 +1,6 @@
 'use strict';
 
+var errors = require('../lib/errors');
 var models = require('../models');
 
 var authenticated = function(req, res, next) {
@@ -26,7 +27,7 @@ var authenticated = function(req, res, next) {
     }
 
     if (!session) {
-      return next(new Error('not found'));
+      return next(new errors.NotFoundError());
     }
 
     req.session = session;

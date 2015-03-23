@@ -28,6 +28,23 @@ curl -v -X POST -H "Content-Type: application/json" \
 ### User lists
 
 ```
-curl -v -H "Authorization: Bearer a5801a9b65494cec810329e70105f755bcd491d21b532c5ee95af76e14ce37c9156a333a417306d54013765908e87c19a139658e496ed7094c0a5e7d9ab6fc54" \
+curl -v -X GET \
+-H "Authorization: Bearer b4c0be7aaaa03aeb5b5b089c464574f1bcab7556865893946de96f30335e098361a464ad6b241f0166c2578f9de995cc910a5945eee2b675dd4ed8e8c812531c" \
 http://express-api.dev/api/v1/users
+```
+
+### Find User
+
+```
+curl -v -X GET \
+-H "Authorization: Bearer b4c0be7aaaa03aeb5b5b089c464574f1bcab7556865893946de96f30335e098361a464ad6b241f0166c2578f9de995cc910a5945eee2b675dd4ed8e8c812531c" \
+http://express-api.dev/api/v1/users/ff097f5e-a6a6-4d8e-b9bf-f5b3e2107077
+```
+
+### Sign out
+
+```
+curl -v -X DELETE \
+-H "Authorization: Bearer 79f26441dfd1d106345f2d8817fca8895bf2906f990a7cf1aa3a227c51feadbd7001c1a186b7074a64eb89de5af2bce9745d6507ff293eb8115da51372090e1e" \
+http://express-api.dev/api/v1/sessions
 ```

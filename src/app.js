@@ -4,6 +4,7 @@ try { require('dotenv').load(); } catch(e) {}
 var express = require('express');
 
 var bodyParser = require('body-parser');
+var errors = require('./lib/errors');
 var helmet = require('helmet');
 var morgan = require('morgan');
 var routes = require('./routes');
@@ -17,9 +18,7 @@ app.use('/api/v1', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  next(new errors.NotFoundError());
 });
 
 // error handlers

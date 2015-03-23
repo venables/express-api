@@ -3,6 +3,7 @@
 var express = require('express');
 
 var controllers = require('./controllers');
+var errors = require('./lib/errors');
 var middleware = require('./middleware');
 var models = require('./models');
 var router = express.Router();
@@ -18,7 +19,7 @@ router.use(middleware.authenticated);
 router.param('userId', function(req, res, next, userId) {
   models.User.find(userId).done(function(err, user) {
     if (!user) {
-      err = err || new Error('not found');
+      err = err || new errors.NotFoundError();
     }
 
     req.user = user;

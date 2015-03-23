@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var errors = require('../lib/errors');
 var models = require('../models');
 
 var index = function(req, res, next) {
@@ -32,11 +33,11 @@ var create = function(req, res, next) {
 };
 
 var update = function(req, res, next) {
-  res.sendStatus(404);
+  next(new errors.NotFoundError());
 };
 
 var destroy = function(req, res, next) {
-  res.sendStatus(404);
+  next(new errors.NotFoundError());
 };
 
 module.exports = {

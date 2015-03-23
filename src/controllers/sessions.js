@@ -12,6 +12,9 @@ var create = function(req, res, next) {
     authenticate: function(next) {
       models.User.authenticate(req.body.email, req.body.password).done(function(err, _user) {
         user = _user;
+        if (!user) {
+          err = err || new Error() // 400
+        }
         next(err);
       });
     },
