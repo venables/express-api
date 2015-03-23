@@ -63,7 +63,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     instanceMethods: {
       toJSON: function() {
-        console.log(this);
         var json = this.values;
 
         delete json.passwordDigest;

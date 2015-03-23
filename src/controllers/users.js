@@ -27,16 +27,16 @@ var create = function(req, res, next) {
       return next(err);
     }
 
-    res.send(201);
+    res.sendStatus(201);
   });
 };
 
 var update = function(req, res, next) {
-  res.send(404);
+  res.sendStatus(404);
 };
 
 var destroy = function(req, res, next) {
-  res.send(404);
+  res.sendStatus(404);
 };
 
 module.exports = {
