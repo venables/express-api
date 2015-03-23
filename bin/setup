@@ -20,6 +20,9 @@ fi
 
 echo "port: $PORT" > .foreman
 
+# Migrate the database
+./node_modules/.bin/sequelize db:migrate
+
 # Set up DNS through Pow
 if [ -d ~/.pow ]
 then

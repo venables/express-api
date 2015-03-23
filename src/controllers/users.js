@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var models = require('../models');
 
 var index = function(req, res, next) {
@@ -8,7 +9,7 @@ var index = function(req, res, next) {
       return next(err);
     }
 
-    res.send({
+    res.json(200, {
       users: users
     });
   });
@@ -19,7 +20,15 @@ var show = function(req, res, next) {
 };
 
 var create = function(req, res, next) {
-  res.send(400);
+  var params = _.pick(req.body, 'email', 'password');
+
+  models.User.create(params).done(function(err) {
+    if (err) {
+      return next(err);
+    }
+
+    res.send(201);
+  });
 };
 
 var update = function(req, res, next) {

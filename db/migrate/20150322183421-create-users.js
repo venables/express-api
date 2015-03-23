@@ -6,6 +6,7 @@ module.exports = {
       .createTable('users', {
         id: {
           type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4,
           primaryKey: true
         },
         email: {
